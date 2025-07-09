@@ -6,7 +6,15 @@ import path from 'path';
 import chalk from 'chalk';
 import readline from 'readline';
 import { nombreCli } from './utils/variables.js';
-import { proyectos } from './lib/proyectos.js';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const proyectosPath = path.join(__dirname, 'lib', 'proyectos.json');
+const proyectos = JSON.parse(fs.readFileSync(proyectosPath, 'utf8'));
+
+// const proyectos = JSON.parse(fs.readFileSync('./src/lib/proyectos.json', 'utf8'));
 
 program
   .name('Juan-CLI')
@@ -15,10 +23,15 @@ program
   .addHelpText('beforeAll', chalk.red(nombreCli));
 
 program
-  .command('saludar')
-  .option('-n, --nombre [nombre]', 'Nombre del usuario', 'JuanPabloMS')
-  .action((options) => {
-    console.log(`👋 Hola, soy ${options.nombre}, ¡bienvenido a mi CLI!`);
+  .command('agregar <nombre>')
+  .action((nombre) => {
+    proyectos.push({
+      id: proyectos.length + 1,
+      tecnologia: nombre,
+      color: '#'+Math.floor(Math.random()*16777215).toString(16), // Genera un color aleatorio
+      proyectos: []
+    });
+    fs.writeFileSync(proyectosPath, JSON.stringify(proyectos, null, 2));
   });
 
 program
