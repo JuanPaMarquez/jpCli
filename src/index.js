@@ -5,16 +5,9 @@ import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import readline from 'readline';
+import { preguntar } from './utils/funciones.js';
+import { mostrarTecnologias } from './components/mostrar.js';
 import { nombreCli } from './utils/variables.js';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const proyectosPath = path.join(__dirname, 'lib', 'proyectos.json');
-const proyectos = JSON.parse(fs.readFileSync(proyectosPath, 'utf8'));
-
-// const proyectos = JSON.parse(fs.readFileSync('./src/lib/proyectos.json', 'utf8'));
 
 program
   .name('Juan-CLI')
@@ -84,47 +77,6 @@ program
   .command('proyectos')
   .description('Modo interactivo de proyectos')
   .action(() => {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    });
-
-    const mostrarTecnologias = () => {
-      console.clear();
-      if (!proyectos) {
-        console.log('❌ No se encontraron proyectos en la carpeta lib.');
-        rl.close();
-        return;
-      }
-
-      console.log(chalk.blue('📋 Lista de proyectos:'));
-      console.log('─'.repeat(50));
-
-      proyectos.forEach(proyecto => {
-        console.log(chalk.hex(proyecto.color).bold(`\n[${proyecto.id}] ${proyecto.tecnologia}`));
-        proyecto.proyectos.forEach(p => {
-          console.log(`  📄 ${p.nombre}: ${chalk.gray(p.ruta)}`);
-        });
-      });
-    };
-
-    const preguntar = () => {
-      rl.question(chalk.yellow('\n🔁 Digite un número valido o escribe "q" para salir: '), (respuesta) => {
-        if (respuesta.trim().toLowerCase() === 'q') {
-          console.clear();
-          console.log(chalk.green('👋 Saliendo del modo interactivo...'));
-          rl.close();
-        } else {
-          console.log(chalk.red("\nNumero invalido!"));
-          setTimeout(() => {
-            console.clear();
-            mostrarTecnologias();
-            preguntar();
-          }, 2000);
-        }
-      });
-    };
-
     mostrarTecnologias();
     preguntar();
   });
