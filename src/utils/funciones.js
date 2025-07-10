@@ -13,60 +13,70 @@ const rl = readline.createInterface({
 });
 
 export function preguntar() {
-  rl.question(chalk.yellow('\n🔁 Digite un número valido o escribe "q" para salir: '), (respuesta) => {
+  rl.question(chalk.yellow('\n🔁 Digite un número valido o "q" para salir: '), (respuesta) => {
+
     const valor = respuesta.trim().toLowerCase();
+
     if (valor === 'q') {
-      console.clear();
+      borrarPantalla();
       console.log(chalk.green('👋 Saliendo del modo interactivo...'));
       rl.close();
       return;
     }
 
-    if (validarNumero(valor, proyectos)) {
-      const tech = proyectos.find(p => p.id === parseInt(valor));
-      mostrarProyectos(tech);
-      preguntarProyecto(tech);
-    } else {
-      console.log(chalk.red("\nNúmero inválido!"));
+    if (!validarNumero(valor, proyectos)) {
+      console.log(chalk.red("\nNÚMERO INVALIDO!"));
       setTimeout(() => {
         mostrarTecnologias();
         preguntar();
       }, 1500);
-    }
+      return;
+    }    
+
+    const tecnologiaSeleccionada = proyectos.find(p => p.id === parseInt(valor));
+    mostrarProyectos(tecnologiaSeleccionada);
+    preguntarProyecto(tecnologiaSeleccionada);
   });
 };
 
-export function preguntarProyecto(tech) {
+export function preguntarProyecto(tecnologiaSeleccionada) {
   rl.question(chalk.yellow('\n🔁 Digite un número valido o escribe "q" para salir: '), (respuesta) => {
+
     const valorProyecto = respuesta.trim().toLowerCase();
     
     if (valorProyecto === 'q') {
-      console.clear();
       mostrarTecnologias();
       preguntar();
       return;
     }
 
-    if (validarNumero(valorProyecto, tech.proyectos)) {
-      const proyectoSeleccionado = tech.proyectos.find(p => p.id === parseInt(valorProyecto));
-      console.clear();
-      console.log(`Proyecto seleccionado: ${proyectoSeleccionado.nombre}\n`);
-      
-      try {
-        clipboardy.writeSync(`cd "${proyectoSeleccionado.ruta}"`);
-        console.clear();
-        console.log(chalk.green('✅ Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
-        rl.close();
-      } catch (error) {
-        console.log(chalk.yellow('⚠️ No se pudo copiar al portapapeles'));
-      }
-      return;
-    } else {
+    if (!validarNumero(valorProyecto, tecnologiaSeleccionada.proyectos)) {
       console.log(chalk.red("\nNúmero inválido!"));
       setTimeout(() => {
-        mostrarProyectos(tech);
-        preguntarProyecto(tech);
+        mostrarProyectos(tecnologiaSeleccionada);
+        preguntarProyecto(tecnologiaSeleccionada);
       }, 1500);
+      return;
     }
+    
+    borrarPantalla();
+    const proyectoSeleccionado = tecnologiaSeleccionada.proyectos.find(p => p.id === parseInt(valorProyecto));
+    console.log(`Proyecto seleccionado: ${proyectoSeleccionado.nombre}\n`);
+    
+    try {
+      clipboardy.writeSync(`cd "${proyectoSeleccionado.ruta}"`);
+      borrarPantalla();
+      console.log(chalk.green('✅ Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
+      rl.close();
+    } catch (error) {
+      console.log(chalk.yellow('⚠️ No se pudo copiar al portapapeles'));
+    }
+
+    return;
   });
+}
+
+
+export function borrarPantalla() {
+  console.clear();
 }
