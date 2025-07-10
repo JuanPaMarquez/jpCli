@@ -32,6 +32,6 @@ export function mostrarProyectos(tech) {
 
 export function mostrarConfiguraciones() {
   console.log('='.repeat(50));
-  // console.log(chalk.green('🔧 Configuraciones:'));
+  console.log(chalk.green('[e] Configuraciones:'));
   console.log(chalk.red('[q] Salir'));
 }
