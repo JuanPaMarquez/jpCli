@@ -27,6 +27,7 @@ export function mostrarProyectos(tech) {
     console.log(`  [${p.id}] ${p.nombre}`);
   });
   console.log('='.repeat(50));
+  console.log(chalk.green('[c] Crear proyecto'));
   console.log(chalk.red('[q] Salir'));
 }
 

@@ -4,7 +4,6 @@ import { program } from 'commander';
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import readline from 'readline';
 import { preguntar } from './utils/funciones.js';
 import { mostrarTecnologias } from './components/mostrar.js';
 import { nombreCli } from './utils/variables.js';

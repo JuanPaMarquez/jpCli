@@ -1,3 +1,4 @@
+import fs from 'fs';
 import chalk from 'chalk';
 import clipboardy from 'clipboardy';
 import readline from 'readline';
@@ -34,10 +35,6 @@ export function preguntar() {
       console.log('Directorio del proyecto:', projectRoot);
       console.log(chalk.green('🔧 Entrando en configuraciones...'));
       copiarRutaAlPortapapeles(projectRoot);
-      // Ejemplos de uso:
-      // const configFile = obtenerRutaEspecifica('src', 'config', 'settings.json');
-      // const packageJsonPath = obtenerRutaEspecifica('package.json');
-      
       rl.close();
       return;
     }
@@ -68,6 +65,11 @@ export function preguntarProyecto(tecnologiaSeleccionada) {
       return;
     }
 
+    if (valorProyecto === 'c') {
+      crearProyecto(tecnologiaSeleccionada);
+      return;
+    }
+
     if (!validarNumero(valorProyecto, tecnologiaSeleccionada.proyectos)) {
       console.log(chalk.red("\nNúmero inválido!"));
       setTimeout(() => {
@@ -87,11 +89,66 @@ export function preguntarProyecto(tecnologiaSeleccionada) {
   });
 }
 
+function crearProyecto(tecnologiaSeleccionada) {
+  borrarPantalla();
+  if (!tecnologiaSeleccionada) {
+    console.log(chalk.red('❌ No se ha seleccionado una tecnología válida.'));
+    setTimeout(() => {
+      mostrarTecnologias();
+      preguntar();
+    }, 1500);
+    return;
+  }
+  console.log('='.repeat(50));
+  console.log(chalk.blue('📂 Crear proyecto en:'), tecnologiaSeleccionada.tecnologia);
+  console.log('='.repeat(50));
+  
+  rl.question(chalk.yellow('🔧 Ingresa el nombre del nuevo proyecto: '), (respuesta) => {
+    const nombreProyecto = respuesta.trim();
+
+    if (!nombreProyecto) {
+      console.log(chalk.red('❌ El nombre del proyecto no puede estar vacío.'));
+      setTimeout(() => {
+        crearProyecto(tecnologiaSeleccionada);
+      }, 1500);
+      return;
+    }
+
+    const rutaProyecto = tecnologiaSeleccionada.rutaPrincipal + '\\' + nombreProyecto;
+
+    if (fs.existsSync(rutaProyecto)) {
+      console.log(chalk.red(`❌ El proyecto "${nombreProyecto}" ya existe en la ruta ${rutaProyecto}.`));
+      setTimeout(() => {
+        crearProyecto(tecnologiaSeleccionada);
+      }, 1500);
+      return;
+    }
+
+    const nuevoProyecto = {
+      id: tecnologiaSeleccionada.proyectos.length + 1,
+      nombre: nombreProyecto,
+      ruta: rutaProyecto
+    };
+    tecnologiaSeleccionada.proyectos.push(nuevoProyecto);
+    try {
+      fs.mkdirSync(rutaProyecto, { recursive: true });
+      console.log(chalk.blue('📁 Creando carpeta en:'), rutaProyecto);
+      fs.writeFileSync(obtenerRutaEspecifica('src', 'lib', 'proyectos.json'), JSON.stringify(proyectos, null, 2));
+      console.log(chalk.green(`✅ Proyecto creado: ${nombreProyecto}`));
+    } catch (error) {
+      console.error(chalk.red('❌ Error al guardar el proyecto:'), error);
+    }
+    setTimeout(() => {
+      mostrarProyectos(tecnologiaSeleccionada);
+      preguntarProyecto(tecnologiaSeleccionada);
+    }, 2000);
+  });
+}
+
 function copiarRutaAlPortapapeles(ruta) {
   try {
     const unidad = ruta[0];
-    const sinUnidad = ruta.slice(3);
-    clipboardy.writeSync(`${unidad}: && cd "${sinUnidad}"`);
+    clipboardy.writeSync(`${unidad}: && cd "${ruta}"`);
     console.log(chalk.green('✅ Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
     rl.close();
   } catch (error) {
@@ -103,13 +160,11 @@ export function borrarPantalla() {
   console.clear();
 }
 
-// Función utilitaria para obtener la ruta raíz del proyecto
 function obtenerRutaRaiz() {
   const __filename = fileURLToPath(import.meta.url);
   return path.resolve(path.dirname(__filename), '../../');
 }
 
-// Función para obtener rutas específicas del proyecto
 export function obtenerRutaEspecifica(...segments) {
   return path.join(obtenerRutaRaiz(), ...segments);
 }
