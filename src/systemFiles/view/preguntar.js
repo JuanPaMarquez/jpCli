@@ -21,7 +21,7 @@ export function crearProyecto(tecnologiaSeleccionada, proyectos) {
     mostrarError('tecnologiaInvalida');
     setTimeout(() => {
       iniciarSistema();
-    }, 1500);
+    }, 2000);
     return;
   }
   console.log('='.repeat(50));
@@ -35,17 +35,17 @@ export function crearProyecto(tecnologiaSeleccionada, proyectos) {
       mostrarError('nombreProyectoVacio');
       setTimeout(() => {
         crearProyecto(tecnologiaSeleccionada);
-      }, 1500);
+      }, 2000);
       return;
     }
 
     const rutaProyecto = tecnologiaSeleccionada.rutaPrincipal + '\\' + nombreProyecto;
 
     if (existeCarpeta(rutaProyecto)) {
-      mostrarError('proyectoExistente', nombreProyecto, rutaProyecto);
+      mostrarError('proyectoExistente', '', nombreProyecto, rutaProyecto);
       setTimeout(() => {
         crearProyecto(tecnologiaSeleccionada);
-      }, 1500);
+      }, 2000);
       return;
     }
     
@@ -95,7 +95,7 @@ export function preguntarTecnologia(proyectos) {
       
       setTimeout(() => {
         iniciarSistema();
-      }, 1500);
+      }, 2000);
       return;
     }  
 
@@ -123,7 +123,7 @@ export function preguntarProyecto(tecnologiaSeleccionada, proyectos) {
       mostrarError('numeroInvalido');
       setTimeout(() => {
         cargarProyectos(tecnologiaSeleccionada, proyectos);
-      }, 1500);
+      }, 2000);
       return;
     }
     
