@@ -4,27 +4,14 @@ import { program } from 'commander';
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import { preguntar } from './utils/funciones.js';
-import { mostrarTecnologias } from './components/mostrar.js';
 import { nombreCli } from './utils/variables.js';
+import { systemFilesApp } from './systemFiles/main.js';
 
 program
   .name('Juan-CLI')
   .description('CLI para gestionar carpetas y archivos hecho por JuanPabloMS')
   .version('version: 1.0.0', '-v, --version', 'Mostrar versión del CLI')
   .addHelpText('beforeAll', chalk.red(nombreCli));
-
-program
-  .command('agregar <nombre>')
-  .action((nombre) => {
-    proyectos.push({
-      id: proyectos.length + 1,
-      tecnologia: nombre,
-      color: '#'+Math.floor(Math.random()*16777215).toString(16), // Genera un color aleatorio
-      proyectos: []
-    });
-    fs.writeFileSync(proyectosPath, JSON.stringify(proyectos, null, 2));
-  });
 
 program
   .command('ruta')
@@ -76,8 +63,7 @@ program
   .command('proyectos')
   .description('Modo interactivo de proyectos')
   .action(() => {
-    mostrarTecnologias();
-    preguntar();
+    systemFilesApp();
   });
 
 program.parse(process.argv);

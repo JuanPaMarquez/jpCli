@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -17,5 +18,8 @@
     "chalk": "^5.4.1",
     "clipboardy": "^4.0.0",
     "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.30.1"
   }
 }
