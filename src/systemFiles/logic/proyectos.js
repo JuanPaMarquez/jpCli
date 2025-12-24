@@ -11,3 +11,17 @@ export function crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyect
 
 	stmt.run(nombreProyecto, rutaProyecto, tecnologiaSeleccionada.id);
 }
+
+
+export function borrarProyecto(proyectoId, rutaProyecto) {
+  if (fs.existsSync(rutaProyecto)) {
+    fs.rmSync(rutaProyecto, { recursive: true, force: true });
+  }
+
+  const stmt = db.prepare(`
+    DELETE FROM proyectos
+    WHERE id = ?
+  `);
+
+  stmt.run(proyectoId);
+}

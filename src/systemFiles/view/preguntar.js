@@ -7,15 +7,62 @@ import {
   mostrarError, 
 } from './mostrar.js';
 import { cargarProyectos, iniciarSistema } from '../main.js';
-import { crearCarpeta } from '../logic/proyectos.js';
+import { borrarProyecto, crearCarpeta } from '../logic/proyectos.js';
 import path from 'path';
+import { datosProyectos } from '../data/data.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-export function crearProyecto(tecnologiaSeleccionada, proyectos) {
+function confirmarEliminarProyecto(tecnologiaSeleccionada) {
+  rl.question(
+    chalk.red('⚠️ ¿Eliminar un proyecto? (s/n): '),
+    (resp) => {
+      if (resp.toLowerCase() !== 's') {
+        cargarProyectos(tecnologiaSeleccionada);
+        return;
+      }
+
+      rl.question(
+        chalk.yellow('👉 Número del proyecto a eliminar: '),
+        (num) => {
+          const indice = parseInt(num) - 1;
+
+          if (
+            isNaN(indice) ||
+            indice < 0 ||
+            indice >= tecnologiaSeleccionada.proyectos.length
+          ) {
+            mostrarError('numeroInvalido');
+            setTimeout(() => cargarProyectos(tecnologiaSeleccionada), 2000);
+            return;
+          }
+
+          const proyecto = tecnologiaSeleccionada.proyectos[indice];
+
+          try {
+            borrarProyecto(proyecto.id, proyecto.ruta);
+            console.log(chalk.green('✅ Proyecto eliminado'));
+          } catch (e) {
+            console.error(chalk.red('❌ Error al eliminar'), e);
+          }
+
+          setTimeout(() => {
+            const proyectosActualizados = datosProyectos();
+            const tecnologiaActualizada = proyectosActualizados.find(
+              t => t.id === tecnologiaSeleccionada.id
+            );
+            cargarProyectos(tecnologiaActualizada, proyectosActualizados);
+          }, 1500);
+        }
+      );
+    }
+  );
+}
+
+export function crearProyecto(tecnologiaSeleccionada) {
   borrarPantalla();
   if (!tecnologiaSeleccionada) {
     mostrarError('tecnologiaInvalida');
@@ -57,8 +104,14 @@ export function crearProyecto(tecnologiaSeleccionada, proyectos) {
       console.error(chalk.red('❌ Error al guardar el proyecto:'), error);
     }
     setTimeout(() => {
-      cargarProyectos(tecnologiaSeleccionada, proyectos);
-    }, 2000);
+			const proyectosActualizados = datosProyectos();
+
+			const tecnologiaActualizada = proyectosActualizados.find(
+				t => t.tecnologia === tecnologiaSeleccionada.tecnologia
+			);
+
+			cargarProyectos(tecnologiaActualizada, proyectosActualizados);
+		}, 2000);
   });
 }
 
@@ -116,6 +169,11 @@ export function preguntarProyecto(tecnologiaSeleccionada, proyectos) {
       iniciarSistema();
       return;
     }
+
+		if (valorProyecto === 'd') {
+			confirmarEliminarProyecto(tecnologiaSeleccionada);
+			return;
+		}
 
     if (valorProyecto === 'c') {
       crearProyecto(tecnologiaSeleccionada, proyectos);

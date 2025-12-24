@@ -57,6 +57,7 @@ export function mostrarProyectos(tech) {
   });
   console.log('='.repeat(50));
   console.log(chalk.green('[c] Crear proyecto'));
+	console.log(chalk.yellow('[d] Eliminar proyecto'));
   console.log(chalk.red('[q] Salir'));
 }
 
