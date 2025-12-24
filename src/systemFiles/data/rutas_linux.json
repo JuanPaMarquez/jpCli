@@ -1,0 +1,545 @@
+[
+  {
+    "id": 1,
+    "tecnologia": "DOCS",
+    "color": "#ffffff",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/DOCS-JUAN",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "POSTGRESQL-DOCS",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCS-JUAN/PostgrestSQL"
+      },
+      {
+        "id": 2,
+        "nombre": "docs",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCS-JUAN/docs"
+      },
+      {
+        "id": 3,
+        "nombre": "prueba",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCS-JUAN/prueba"
+      },
+      {
+        "id": 4,
+        "nombre": "nuevo",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCS-JUAN/nuevo"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "tecnologia": "HTML, CSS y JavaScript",
+    "color": "#01ff7e",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "PORTAFOLIO",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT/(1) RESPONSIVE DESING/(Final) Portafolio"
+      },
+      {
+        "id": 2,
+        "nombre": "TierMaker",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT/(07)-tier-maker"
+      },
+      {
+        "id": 3,
+        "nombre": "JavaScript-Projects",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/JavaScript"
+      },
+      {
+        "id": 4,
+        "nombre": "pruebaCode",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT/pruebahtml"
+      },
+      {
+        "id": 5,
+        "nombre": "AnimationScroll",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT/animationScroll"
+      },
+      {
+        "id": 6,
+        "nombre": "prueba-git",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT/prueba-git"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "tecnologia": "Docker",
+    "color": "#016eff",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/DOCKER",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "javaDockerApp",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/javaDockerApp"
+      },
+      {
+        "id": 2,
+        "nombre": "mongoapp-curso-docker",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/mongoapp-curso-docker"
+      },
+      {
+        "id": 3,
+        "nombre": "mysql-docker",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/mysql-docker"
+      },
+      {
+        "id": 4,
+        "nombre": "node-prueba",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/node-prueba"
+      },
+      {
+        "id": 5,
+        "nombre": "spring-boot-docker",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/spring-boot-docker"
+      },
+      {
+        "id": 6,
+        "nombre": "dockerjava",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/dockerjava"
+      },
+      {
+        "id": 7,
+        "nombre": "docker-nodejs-sample",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/docker-nodejs-sample"
+      },
+      {
+        "id": 8,
+        "nombre": "wine-office",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/wine-office"
+      },
+      {
+        "id": 9,
+        "nombre": "drawdb",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCKER/drawdb"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "tecnologia": "Java",
+    "color": "#ff9e0b",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/JAVA-PROJECTS",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "JavaArrays",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/java-arrays"
+      },
+      {
+        "id": 2,
+        "nombre": "JavaMap",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/map"
+      },
+      {
+        "id": 3,
+        "nombre": "javaAuto",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/jjavaAuto"
+      },
+      {
+        "id": 4,
+        "nombre": "factoryMethod",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/factoryMethod"
+      },
+      {
+        "id": 5,
+        "nombre": "javaFigura",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/javaFigura"
+      },
+      {
+        "id": 6,
+        "nombre": "javaMaven",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/javaMaven"
+      },
+      {
+        "id": 7,
+        "nombre": "javaGradlew",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/javaGradlew"
+      },
+      {
+        "id": 8,
+        "nombre": "nvim-java",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/nvim-java"
+      },
+      {
+        "id": 9,
+        "nombre": "gradle-nvim",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/gradle-nvim"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "tecnologia": "Trabajo CENS",
+    "color": "#e3ff01",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "codigoPruebas",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS/CODIGOS/codigoPruebas"
+      },
+      {
+        "id": 2,
+        "nombre": "ExcelReader",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/HTML, CSS y JAVASCRIPT/excelReader"
+      },
+      {
+        "id": 3,
+        "nombre": "Cens-Report",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/cens-report"
+      },
+      {
+        "id": 4,
+        "nombre": "sigma_act_sube",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS/sigma_act_sube"
+      },
+      {
+        "id": 5,
+        "nombre": "sigma_seg_ot",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS/sigma_seg_ot"
+      },
+      {
+        "id": 6,
+        "nombre": "sigma_seg_ss",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS/sigma_seg_ss"
+      },
+      {
+        "id": 7,
+        "nombre": "sigma_indi_stn_str",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS/sigma_indi_stn_str"
+      },
+      {
+        "id": 8,
+        "nombre": "script_generador",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DOCUMENTOS TRABAJO CENS/script_generador"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "tecnologia": "Python",
+    "color": "#002994",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/PYTHON",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "Genlist",
+        "ruta": "/media/juanpa/Almacenamiento/PROYECTO CONFIDENCIAL/GenList"
+      },
+      {
+        "id": 2,
+        "nombre": "REGEX",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/Jpython/regex"
+      },
+      {
+        "id": 3,
+        "nombre": "bootcamp",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/PYTHON/bootcamp"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "tecnologia": "Next.js",
+    "color": "#babbb7",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/NEXT-JS",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "libro-Click-Frontend",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NEXT-JS/libro-click-frontend"
+      },
+      {
+        "id": 2,
+        "nombre": "nextjs-dashboard",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NEXT-JS/nextjs-dashboard"
+      },
+      {
+        "id": 3,
+        "nombre": "Exponte",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NEXT-JS/exponte"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "tecnologia": "React",
+    "color": "#18acff",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/REACT",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "Links",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/links"
+      },
+      {
+        "id": 2,
+        "nombre": "PORTFOLIO",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/portfolio"
+      },
+      {
+        "id": 3,
+        "nombre": "mpa-project",
+        "ruta": "/media/juanpa/Almacenamiento/UNIPAMPLONA/(8) SEMESTRE/CIENCIA DE DATOS/PROYECTO/CodificacionProyecto/mpa-proyect"
+      },
+      {
+        "id": 4,
+        "nombre": "buscador-peliculas",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/buscador-peliculas"
+      },
+      {
+        "id": 5,
+        "nombre": "Cronograma",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/cronograma"
+      },
+      {
+        "id": 6,
+        "nombre": "MetaMercado",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/MetaMercado"
+      },
+      {
+        "id": 7,
+        "nombre": "MilDelicias",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/MilDelicias"
+      },
+      {
+        "id": 8,
+        "nombre": "ColombiaEnUnSabor",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/Colombia-En-Un-Sabor"
+      },
+      {
+        "id": 9,
+        "nombre": "Freseame",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/Freseame"
+      },
+      {
+        "id": 10,
+        "nombre": "sigma",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/sigma"
+      },
+      {
+        "id": 11,
+        "nombre": "mpa-project",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/REACT/mpa-project"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "tecnologia": "Node.js",
+    "color": "#00a502",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/NODEJS",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "LibroClickBackend",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NODEJS/libroClickBackend"
+      },
+      {
+        "id": 2,
+        "nombre": "pruebaTypescript",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NODEJS/pruebaTypescript"
+      },
+      {
+        "id": 3,
+        "nombre": "ExponteApi",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NODEJS/exponteApi"
+      },
+      {
+        "id": 4,
+        "nombre": "CryptoJS",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NODEJS/cryptoJS"
+      },
+      {
+        "id": 5,
+        "nombre": "JPCLI",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/NODEJS/jpcli"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "tecnologia": "Spring Boot",
+    "color": "#6db33f",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/proyectos spring boot",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "webAplicationSpring",
+        "ruta": "/media/juanpa/Almacenamiento/JAVA-PROJECTS/proyectos spring boot/gs-securing-web/initial"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "tecnologia": "Laravel",
+    "color": "#f53003",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/LARAVEL",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "Proyecto",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/LARAVEL/proyecto"
+      },
+      {
+        "id": 2,
+        "nombre": "Laravel-Crud-Api",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/LARAVEL/laravel-crud-api"
+      },
+      {
+        "id": 3,
+        "nombre": "Permisos",
+        "ruta": "/media/juanpa/Almacenamiento/LARAGON/laragon/www/permisos"
+      },
+      {
+        "id": 4,
+        "nombre": "laravel-sena",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/LARAVEL/laravel-sena"
+      },
+      {
+        "id": 5,
+        "nombre": "Proyecto-Sena",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/LARAVEL/proyecto-sena"
+      },
+      {
+        "id": 6,
+        "nombre": "AnubisAccess-api",
+        "ruta": "/media/juanpa/Almacenamiento/LARAGON/laragon/www/AnubisAccess-api"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "tecnologia": "PHP",
+    "color": "#40048a",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/XAMPP/htdocs",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "Prueba-php",
+        "ruta": "/media/juanpa/Almacenamiento/XAMPP/htdocs/prueba-php"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "tecnologia": "Vue.js",
+    "color": "#28b203",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/VUEJS",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "Prueba-vue",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/VUEJS/prueba-vue"
+      },
+      {
+        "id": 2,
+        "nombre": "frontend-prueba",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/VUEJS/frontend-prueba"
+      },
+      {
+        "id": 3,
+        "nombre": "vue-typescript",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/VUEJS/vue-typescript"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "tecnologia": "C",
+    "color": "#0000FF",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/C",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "holaMundo",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/C/holaMundo"
+      },
+      {
+        "id": 2,
+        "nombre": "proyecto-hola-mundo",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/C/proyecto-hola-mundo"
+      },
+      {
+        "id": 3,
+        "nombre": "codecrafters-shell-c",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/C/codecrafters-shell-c"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "tecnologia": "Django",
+    "color": "#156649",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/django",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "primer-app",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/primer-app"
+      },
+      {
+        "id": 2,
+        "nombre": "djangoproject",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/djangoproject"
+      },
+      {
+        "id": 3,
+        "nombre": "django-crud-auth",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/django-crud-auth"
+      },
+      {
+        "id": 4,
+        "nombre": "bootcamp",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/bootcamp"
+      },
+      {
+        "id": 5,
+        "nombre": "reactDjango",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/reactDjango"
+      },
+      {
+        "id": 6,
+        "nombre": "django-crud-react",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/django-crud-react"
+      },
+      {
+        "id": 7,
+        "nombre": "api-login",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/django/api-login"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "tecnologia": "DataPioneers",
+    "color": "#ffb700",
+    "rutaPrincipal": "/media/juanpa/Almacenamiento/J-DOC/DataPioneers",
+    "proyectos": [
+      {
+        "id": 1,
+        "nombre": "NextControl-App",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DataPioneers/NextControl-App"
+      },
+      {
+        "id": 2,
+        "nombre": "next_control_db",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DataPioneers/next_control_db"
+      },
+      {
+        "id": 3,
+        "nombre": "frontend-nextcontrolapp",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DataPioneers/frontend-nextcontrolapp"
+      },
+      {
+        "id": 4,
+        "nombre": "backend-nextcontrol",
+        "ruta": "/media/juanpa/Almacenamiento/J-DOC/DataPioneers/backend-nextcontrol"
+      }
+    ]
+  }
+]

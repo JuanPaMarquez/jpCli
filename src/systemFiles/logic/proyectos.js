@@ -1,16 +1,13 @@
-import { obtenerRutaEspecifica } from '../logic/rutas.js';
+import { db } from '../data/db.js';
 import fs from 'fs';
 
-export function crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyecto, proyectos) {
- 
-  const nuevoProyecto = {
-    id: tecnologiaSeleccionada.proyectos.length + 1,
-    nombre: nombreProyecto,
-    ruta: rutaProyecto
-  };
+export function crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyecto) {
+	fs.mkdirSync(rutaProyecto, { recursive: true });
 
-  tecnologiaSeleccionada.proyectos.push(nuevoProyecto);
+	const stmt = db.prepare(`
+		INSERT INTO proyectos (nombre, ruta, tecnologia_id)
+		VALUES (?, ?, ?)
+	`);
 
-  fs.mkdirSync(rutaProyecto, { recursive: true });
-  fs.writeFileSync(obtenerRutaEspecifica('src', 'systemFiles', 'data', 'proyectos.json'), JSON.stringify(proyectos, null, 2));
+	stmt.run(nombreProyecto, rutaProyecto, tecnologiaSeleccionada.id);
 }

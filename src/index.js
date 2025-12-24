@@ -10,7 +10,7 @@ import { systemFilesApp } from './systemFiles/main.js';
 program
   .name('Juan-CLI')
   .description('CLI para gestionar carpetas y archivos hecho por JuanPabloMS')
-  .version('version: 1.0.0', '-v, --version', 'Mostrar versión del CLI')
+  .version('JPC-CLI version: 1.0.0', '-v, --version', 'Mostrar versión del CLI')
   .addHelpText('beforeAll', chalk.red(nombreCli));
 
 program
@@ -60,7 +60,7 @@ program
   });
 
 program
-  .command('proyectos')
+  .command('p')
   .description('Modo interactivo de proyectos')
   .action(() => {
     systemFilesApp();

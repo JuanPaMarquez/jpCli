@@ -8,7 +8,7 @@ import {
 } from './mostrar.js';
 import { cargarProyectos, iniciarSistema } from '../main.js';
 import { crearCarpeta } from '../logic/proyectos.js';
-
+import path from 'path';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -37,9 +37,10 @@ export function crearProyecto(tecnologiaSeleccionada, proyectos) {
         crearProyecto(tecnologiaSeleccionada);
       }, 2000);
       return;
-    }
+		}
 
-    const rutaProyecto = tecnologiaSeleccionada.rutaPrincipal + '\\' + nombreProyecto;
+    // const rutaProyecto = tecnologiaSeleccionada.rutaPrincipal + '\\' + nombreProyecto;
+		const rutaProyecto = path.join(tecnologiaSeleccionada.rutaPrincipal, nombreProyecto);
 
     if (existeCarpeta(rutaProyecto)) {
       mostrarError('proyectoExistente', '', nombreProyecto, rutaProyecto);
@@ -50,7 +51,7 @@ export function crearProyecto(tecnologiaSeleccionada, proyectos) {
     }
     
     try {
-      crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyecto, proyectos);      
+      crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyecto);      
       console.log(chalk.green(`✅ Proyecto creado: ${nombreProyecto}`));
     } catch (error) {
       console.error(chalk.red('❌ Error al guardar el proyecto:'), error);
@@ -99,7 +100,9 @@ export function preguntarTecnologia(proyectos) {
       return;
     }  
 
-    const tecnologiaSeleccionada = proyectos.find(p => p.id === parseInt(valor));
+		const indice = parseInt(valor) - 1;
+		const tecnologiaSeleccionada = proyectos[indice];
+
     cargarProyectos(tecnologiaSeleccionada, proyectos);
   });
 }
@@ -127,7 +130,8 @@ export function preguntarProyecto(tecnologiaSeleccionada, proyectos) {
       return;
     }
     
-    const proyectoSeleccionado = tecnologiaSeleccionada.proyectos.find(p => p.id === parseInt(valorProyecto));
+		const indice = parseInt(valorProyecto) - 1;
+		const proyectoSeleccionado = tecnologiaSeleccionada.proyectos[indice];
     
     borrarPantalla();
     console.log(`Proyecto seleccionado: ${proyectoSeleccionado.nombre}\n`);

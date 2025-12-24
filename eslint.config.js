@@ -8,7 +8,7 @@ export default [
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
-        ...globals.node, // ✅ incluye console, process, __dirname, etc.
+        ...globals.node, // incluye console, process, __dirname, etc.
       },
     },
     rules: {

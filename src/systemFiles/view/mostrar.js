@@ -39,8 +39,8 @@ export function mostrarTecnologias(proyectos) {
   console.log(chalk.blue('📋 Lista de proyectos:'));
   console.log('='.repeat(50));
 
-  proyectos.forEach(proyecto => {
-    console.log(chalk.hex(proyecto.color).bold(`[${proyecto.id}] ${proyecto.tecnologia}`));
+  proyectos.forEach((proyecto, index) => {
+    console.log(chalk.hex(proyecto.color).bold(`[${index + 1}] ${proyecto.tecnologia}`));
   });
 
   mostrarConfiguraciones();
@@ -52,8 +52,8 @@ export function mostrarProyectos(tech) {
   console.log(chalk.hex(tech.color)(` Tecnologia: ${tech.tecnologia.toUpperCase()}`));
   console.log('='.repeat(50));
 
-  tech.proyectos.forEach(p => {
-    console.log(`  [${p.id}] ${p.nombre}`);
+  tech.proyectos.forEach((p, index) => {
+    console.log(`  [${index + 1}] ${p.nombre}`);
   });
   console.log('='.repeat(50));
   console.log(chalk.green('[c] Crear proyecto'));

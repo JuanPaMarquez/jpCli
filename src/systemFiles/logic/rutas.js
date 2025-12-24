@@ -13,7 +13,19 @@ export function obtenerRutaEspecifica(...segments) {
   return path.join(obtenerRutaRaiz(), ...segments);
 }
 
+// Copiar ruta al portapapeles según el sistema operativo
 export function copiarRutaAlPortapapeles(ruta) {
-  const unidad = ruta[0];
-  clipboardy.writeSync(`${unidad}: && cd "${ruta}"`);
+  const esWindows = process.platform === 'win32';
+
+  if (esWindows) {
+    const unidad = ruta[0];
+    // Comando para Windows
+    clipboardy.writeSync(`${unidad}: && cd "${ruta}"`);
+  } else {
+    // Linux / macOS: solo la ruta absoluta
+    clipboardy.writeSync(`cd "${ruta}"`);
+  }
+
+  console.log(`Ruta copiada al portapapeles para ${esWindows ? 'Windows' : 'Linux/macOS'}:`, ruta);
 }
+

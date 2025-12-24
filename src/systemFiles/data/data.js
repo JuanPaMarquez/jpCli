@@ -1,20 +1,23 @@
-import fs from 'fs';
-import { obtenerRutaEspecifica } from '../logic/rutas.js';
+import { db } from './db.js';
 
-export function datosProyectos () {
-  try {
-    const proyectosPath = obtenerRutaEspecifica('src', 'systemFiles', 'data', 'proyectos.json'); // Ruta completa del archivo proyectos.json
-    console.log('📂 Cargando proyectos desde:', proyectosPath);
-    const proyectos = fs.readFileSync(proyectosPath, 'utf8'); // Cargar proyectos desde el archivo JSON
+export function datosProyectos() {
+	const tecnologias = db.prepare(`
+		SELECT * FROM tecnologias
+	`).all();
 
-    if (!proyectos) {
-      console.error('❌ No se encontraron proyectos en la carpeta systemFiles/data.');
-      return [];
-    }
+	return tecnologias.map(tech => {
+		const proyectos = db.prepare(`
+			SELECT id, nombre, ruta
+			FROM proyectos
+			WHERE tecnologia_id = ?
+		`).all(tech.id);
 
-    return JSON.parse(proyectos);
-  } catch (error) {
-    console.error('Error al cargar los proyectos:', error);
-    return [];
-  }
+		return {
+			id: tech.id,
+			tecnologia: tech.tecnologia,
+			color: tech.color,
+			rutaPrincipal: tech.ruta_principal,
+			proyectos
+		};
+	});
 }
