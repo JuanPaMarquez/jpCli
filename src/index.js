@@ -7,8 +7,8 @@ import chalk from 'chalk';
 import { nombreCli } from './utils/variables.js';
 import { systemFilesApp } from './systemFiles/main.js';
 
-program
-  .name('Juan-CLI')
+program 
+	.name('Juan-CLI')
   .description('CLI para gestionar carpetas y archivos hecho por JuanPabloMS')
   .version('JPC-CLI version: 1.0.0', '-v, --version', 'Mostrar versión del CLI')
   .addHelpText('beforeAll', chalk.red(nombreCli));
