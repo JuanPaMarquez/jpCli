@@ -7,7 +7,7 @@ import {
   mostrarError, 
 } from './mostrar.js';
 import { cargarProyectos, iniciarSistema } from '../main.js';
-import { borrarProyecto, crearCarpeta } from '../logic/proyectos.js';
+import { borrarProyecto, crearCarpeta, guardarTecnologia } from '../logic/proyectos.js';
 import path from 'path';
 import { datosProyectos } from '../data/data.js';
 
@@ -60,6 +60,49 @@ function confirmarEliminarProyecto(tecnologiaSeleccionada) {
       );
     }
   );
+}
+
+export function crearTecnologia() {
+  borrarPantalla();
+  
+  console.log('='.repeat(50));
+  console.log(chalk.blue('📂 Crear tecnologia'));
+  console.log('='.repeat(50));
+  rl.question(chalk.yellow('🔧 Nombre de la tecnología: '), (nombre) => {
+    const nombreTecnologia = nombre.trim();
+
+    if (!nombreTecnologia) {
+      mostrarError('nombreTecnologiaVacio');
+      return setTimeout(crearTecnologia, 2000);
+    }
+
+    rl.question(chalk.yellow('🎨 Color HEX (#ff0000): '), (color) => {
+      const colorHex = color.trim();
+
+      rl.question(chalk.yellow('📁 Ruta principal: '), (ruta) => {
+        const rutaPrincipal = ruta.trim();
+
+        try {
+					guardarTecnologia(nombreTecnologia, colorHex, rutaPrincipal);
+					console.log(chalk.green('✅ Tecnología creada correctamente'));
+				} catch (error) {
+					switch (error.message) {
+						case 'COLOR_INVALIDO':
+							mostrarError('carpetaInvalida', 'El color no es un HEX válido. Ej: #ff0000');
+							break;
+
+						case 'CARPETA_NO_EXISTE':
+							mostrarError('carpetaInvalida', 'La carpeta no existe');
+							break;
+
+						default:
+							console.error(chalk.red('❌ Error inesperado'), error);
+					}
+				}
+        setTimeout(iniciarSistema, 2000);
+      });
+    });
+  });
 }
 
 export function crearProyecto(tecnologiaSeleccionada) {
@@ -124,6 +167,11 @@ export function preguntarTecnologia(proyectos) {
       borrarPantalla();
       console.log(chalk.green('👋 Saliendo del modo interactivo...'));
       rl.close();
+      return;
+    }
+
+		 if (valor === 'c') {
+			crearTecnologia();
       return;
     }
 

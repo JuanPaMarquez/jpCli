@@ -7,6 +7,7 @@ export function borrarPantalla() {
 function mostrarConfiguraciones() {
   console.log('='.repeat(50));
   console.log(chalk.green('[e] Configuraciones:'));
+  console.log(chalk.yellow('[c] Crear tecnologia'));
   console.log(chalk.red('[q] Salir'));
 };
 
@@ -16,6 +17,7 @@ export function mostrarError(error, respuestaError, nombreProyecto, rutaProyecto
     tecnologiaInvalida: '❌ No se ha seleccionado una tecnología válida.',
     numeroInvalido: '\n❌ NÚMERO INVALIDO!',
     nombreProyectoVacio: '❌ El nombre del proyecto no puede estar vacío.',
+    nombreTecnologiaVacio: '❌ El nombre de la tecnologia no puede estar vacío.',
     carpetaInvalida: (respuestaError) => `❌ Error al verificar la carpeta: ${respuestaError}`,
     proyectoExistente: (nombreProyecto, rutaProyecto) => `❌ El proyecto "${nombreProyecto}" ya existe en la ruta ${rutaProyecto}.`
   };

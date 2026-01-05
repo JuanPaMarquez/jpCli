@@ -1,5 +1,6 @@
 import { db } from '../data/db.js';
 import fs from 'fs';
+import { esColorHexValido } from './validadores.js';
 
 export function crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyecto) {
 	fs.mkdirSync(rutaProyecto, { recursive: true });
@@ -24,4 +25,21 @@ export function borrarProyecto(proyectoId, rutaProyecto) {
   `);
 
   stmt.run(proyectoId);
+}
+
+export function guardarTecnologia(nombreTecnologia, color, rutaPrincipal) {
+	if (!esColorHexValido(color)) {
+		throw new Error('COLOR_INVALIDO');
+	}
+
+	if (!fs.existsSync(rutaPrincipal)) {
+		throw new Error('CARPETA_NO_EXISTE');
+	}
+
+	const stmt = db.prepare(`
+		INSERT INTO tecnologias (tecnologia, color, ruta_principal)
+		VALUES (?, ?, ?)
+	`);
+
+	stmt.run(nombreTecnologia, color, rutaPrincipal);
 }
