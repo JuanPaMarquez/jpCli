@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { log } from '../../utils/logger.js';
 
 export function borrarPantalla() {
   console.clear();
@@ -13,32 +14,32 @@ function mostrarConfiguraciones() {
 
 export function mostrarError(error, respuestaError, nombreProyecto, rutaProyecto) {
   const errores = {
-    proyectosVacios: '❌ No se encontraron proyectos. Por favor, verifica proyectos.json.',
-    tecnologiaInvalida: '❌ No se ha seleccionado una tecnología válida.',
-    numeroInvalido: '\n❌ NÚMERO INVALIDO!',
-    nombreProyectoVacio: '❌ El nombre del proyecto no puede estar vacío.',
-    nombreTecnologiaVacio: '❌ El nombre de la tecnologia no puede estar vacío.',
-    carpetaInvalida: (respuestaError) => `❌ Error al verificar la carpeta: ${respuestaError}`,
-    proyectoExistente: (nombreProyecto, rutaProyecto) => `❌ El proyecto "${nombreProyecto}" ya existe en la ruta ${rutaProyecto}.`
+    proyectosVacios: 'No se encontraron proyectos. Por favor, verifica proyectos.json.',
+    tecnologiaInvalida: 'No se ha seleccionado una tecnología válida.',
+    numeroInvalido: '\nNÚMERO INVALIDO!',
+    nombreProyectoVacio: 'El nombre del proyecto no puede estar vacío.',
+    nombreTecnologiaVacio: 'El nombre de la tecnologia no puede estar vacío.',
+    carpetaInvalida: (respuestaError) => `Error al verificar la carpeta: ${respuestaError}`,
+    proyectoExistente: (nombreProyecto, rutaProyecto) => `El proyecto "${nombreProyecto}" ya existe en la ruta ${rutaProyecto}.`
   };
 
   if (respuestaError) {
-    console.log(chalk.red(errores[error](respuestaError)));
+		log.err(`${errores[error](respuestaError)}`);
     return;
   }
 
   if (nombreProyecto && rutaProyecto) {
-    console.log(chalk.red(errores[error](nombreProyecto, rutaProyecto)));
+		log.err(`${errores[error](nombreProyecto, rutaProyecto)}`);
     return;
   }
 
-  console.log(chalk.red(errores[error]));
+  log.err(`${chalk.red(errores[error])}`);
 }
 
 export function mostrarTecnologias(proyectos) {
   borrarPantalla();
   console.log('='.repeat(50));
-  console.log(chalk.blue('📋 Lista de proyectos:'));
+  console.log(chalk.blue('Lista de proyectos:'));
   console.log('='.repeat(50));
 
   proyectos.forEach((proyecto, index) => {

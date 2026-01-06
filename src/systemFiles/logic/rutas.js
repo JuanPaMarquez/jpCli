@@ -26,6 +26,6 @@ export function copiarRutaAlPortapapeles(ruta) {
     clipboardy.writeSync(`cd "${ruta}"`);
   }
 
-  console.log(`Ruta copiada al portapapeles para ${esWindows ? 'Windows' : 'Linux/macOS'}:`, ruta);
+  // console.log(`Ruta copiada al portapapeles para ${esWindows ? 'Windows' : 'Linux/macOS'}:`, ruta);
 }
 

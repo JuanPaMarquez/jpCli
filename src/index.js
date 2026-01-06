@@ -6,6 +6,7 @@ import path from 'path';
 import chalk from 'chalk';
 import { nombreCli } from './utils/variables.js';
 import { systemFilesApp } from './systemFiles/main.js';
+import { log } from './utils/logger.js';
 
 program 
 	.name('Juan-CLI')
@@ -17,7 +18,7 @@ program
   .command('ruta')
   .description('Mostrar ruta actual')
   .action(() => {
-    console.log(`📂 Ruta actual: ${process.cwd()}`);
+		log.info(`Ruta actual: ${process.cwd()}`);
   });
 
 program
@@ -27,9 +28,9 @@ program
     const dirPath = path.resolve(nombre);
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
-      console.log(`✅ Carpeta creada: ${dirPath}`);
+			log.ok(`Carpeta creada: ${dirPath}`);
     } else {
-      console.log(`⚠️ Ya existe: ${dirPath}`);
+			log.warn(`Ya existe: ${dirPath}`);
     }
   });
 
@@ -40,9 +41,9 @@ program
     const dirPath = path.resolve(nombre);
     if (fs.existsSync(dirPath)) {
       fs.rmSync(dirPath, { recursive: true, force: true });
-      console.log(`🗑️ Carpeta eliminada: ${dirPath}`);
+      log.ok(`Carpeta eliminada: ${dirPath}`);
     } else {
-      console.log(`❌ No existe: ${dirPath}`);
+      log.err(`No existe: ${dirPath}`);
     }
   });
 
@@ -53,9 +54,9 @@ program
     const fullPath = path.resolve(ruta);
     if (fs.existsSync(fullPath)) {
       const archivos = fs.readdirSync(fullPath);
-      archivos.forEach(a => console.log('📄', a));
+      archivos.forEach(a => log.ok('-', a));
     } else {
-      console.log('❌ Ruta no existe:', fullPath);
+      log.err('Ruta no existe:', fullPath);
     }
   });
 

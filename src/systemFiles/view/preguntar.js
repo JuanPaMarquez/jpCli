@@ -10,6 +10,7 @@ import { cargarProyectos, iniciarSistema } from '../main.js';
 import { borrarProyecto, crearCarpeta, guardarTecnologia } from '../logic/proyectos.js';
 import path from 'path';
 import { datosProyectos } from '../data/data.js';
+import { log } from '../../utils/logger.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -18,7 +19,7 @@ const rl = readline.createInterface({
 
 function confirmarEliminarProyecto(tecnologiaSeleccionada) {
   rl.question(
-    chalk.red('⚠️ ¿Eliminar un proyecto? (s/n): '),
+    chalk.red('- ¿Eliminar un proyecto? (s/n): '),
     (resp) => {
       if (resp.toLowerCase() !== 's') {
         cargarProyectos(tecnologiaSeleccionada);
@@ -26,7 +27,7 @@ function confirmarEliminarProyecto(tecnologiaSeleccionada) {
       }
 
       rl.question(
-        chalk.yellow('👉 Número del proyecto a eliminar: '),
+        chalk.yellow('- Número del proyecto a eliminar: '),
         (num) => {
           const indice = parseInt(num) - 1;
 
@@ -44,9 +45,9 @@ function confirmarEliminarProyecto(tecnologiaSeleccionada) {
 
           try {
             borrarProyecto(proyecto.id, proyecto.ruta);
-            console.log(chalk.green('✅ Proyecto eliminado'));
+            log.ok(chalk.green('Proyecto eliminado'));
           } catch (e) {
-            console.error(chalk.red('❌ Error al eliminar'), e);
+            log.err(chalk.red('Error al eliminar'), e);
           }
 
           setTimeout(() => {
@@ -66,7 +67,7 @@ export function crearTecnologia() {
   borrarPantalla();
   
   console.log('='.repeat(50));
-  console.log(chalk.blue('📂 Crear tecnologia'));
+  console.log(chalk.blue('- Crear tecnologia'));
   console.log('='.repeat(50));
   rl.question(chalk.yellow('🔧 Nombre de la tecnología: '), (nombre) => {
     const nombreTecnologia = nombre.trim();
@@ -76,15 +77,15 @@ export function crearTecnologia() {
       return setTimeout(crearTecnologia, 2000);
     }
 
-    rl.question(chalk.yellow('🎨 Color HEX (#ff0000): '), (color) => {
+    rl.question(chalk.yellow('- Color HEX (#ff0000): '), (color) => {
       const colorHex = color.trim();
 
-      rl.question(chalk.yellow('📁 Ruta principal: '), (ruta) => {
+      rl.question(chalk.yellow('- Ruta principal: '), (ruta) => {
         const rutaPrincipal = ruta.trim();
 
         try {
 					guardarTecnologia(nombreTecnologia, colorHex, rutaPrincipal);
-					console.log(chalk.green('✅ Tecnología creada correctamente'));
+					log.ok(chalk.green('Tecnología creada correctamente'));
 				} catch (error) {
 					switch (error.message) {
 						case 'COLOR_INVALIDO':
@@ -96,7 +97,7 @@ export function crearTecnologia() {
 							break;
 
 						default:
-							console.error(chalk.red('❌ Error inesperado'), error);
+							log.err(chalk.red('Error inesperado'), error);
 					}
 				}
         setTimeout(iniciarSistema, 2000);
@@ -115,10 +116,10 @@ export function crearProyecto(tecnologiaSeleccionada) {
     return;
   }
   console.log('='.repeat(50));
-  console.log(chalk.blue('📂 Crear proyecto en:'), tecnologiaSeleccionada.tecnologia);
+  console.log(chalk.blue('- Crear proyecto en:'), tecnologiaSeleccionada.tecnologia);
   console.log('='.repeat(50));
   
-  rl.question(chalk.yellow('🔧 Ingresa el nombre del nuevo proyecto: '), (respuesta) => {
+  rl.question(chalk.yellow('- Ingresa el nombre del nuevo proyecto: '), (respuesta) => {
     const nombreProyecto = respuesta.trim();
 
     if (!nombreProyecto) {
@@ -142,9 +143,9 @@ export function crearProyecto(tecnologiaSeleccionada) {
     
     try {
       crearCarpeta(tecnologiaSeleccionada, nombreProyecto, rutaProyecto);      
-      console.log(chalk.green(`✅ Proyecto creado: ${nombreProyecto}`));
+      log.ok(chalk.green(`Proyecto creado: ${nombreProyecto}`));
     } catch (error) {
-      console.error(chalk.red('❌ Error al guardar el proyecto:'), error);
+      log.err(chalk.red('Error al guardar el proyecto:'), error);
     }
     setTimeout(() => {
 			const proyectosActualizados = datosProyectos();
@@ -159,13 +160,13 @@ export function crearProyecto(tecnologiaSeleccionada) {
 }
 
 export function preguntarTecnologia(proyectos) {
-  rl.question(chalk.yellow('\n🔁 Digite un número valido o "q" para salir: '), (respuesta) => {
+  rl.question(chalk.yellow('\n- Digite un número valido o "q" para salir: '), (respuesta) => {
     const valor = respuesta.trim().toLowerCase();
 
     // Salir del modo interactivo
     if (valor === 'q') {
       borrarPantalla();
-      console.log(chalk.green('👋 Saliendo del modo interactivo...'));
+      log.ok(chalk.green('- Saliendo del modo interactivo...'));
       rl.close();
       return;
     }
@@ -180,13 +181,13 @@ export function preguntarTecnologia(proyectos) {
       borrarPantalla();
       const rutaRaiz = obtenerRutaRaiz();
       console.log('Directorio del proyecto:', rutaRaiz);
-      console.log(chalk.green('🔧 Entrando en configuraciones...'));
+      log.info(chalk.green('Entrando en configuraciones...'));
 
       try {
         copiarRutaAlPortapapeles(rutaRaiz);
-        console.log(chalk.green('✅ Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
+        log.ok(chalk.green('Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
       } catch (error) {
-        console.log(chalk.yellow('⚠️ No se pudo copiar al portapapeles ', error));
+        log.warn(chalk.yellow('No se pudo copiar al portapapeles ', error));
       }
       rl.close();
       return;
@@ -209,7 +210,7 @@ export function preguntarTecnologia(proyectos) {
 }
 
 export function preguntarProyecto(tecnologiaSeleccionada, proyectos) {
-  rl.question(chalk.yellow('\n🔁 Digite un número valido o escribe "q" para salir: '), (respuesta) => {
+  rl.question(chalk.yellow('\n- Digite un número valido o escribe "q" para salir: '), (respuesta) => {
 
     const valorProyecto = respuesta.trim().toLowerCase();
     
@@ -243,9 +244,9 @@ export function preguntarProyecto(tecnologiaSeleccionada, proyectos) {
     console.log(`Proyecto seleccionado: ${proyectoSeleccionado.nombre}\n`);
     try {
       copiarRutaAlPortapapeles(proyectoSeleccionado.ruta);
-      console.log(chalk.green('✅ Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
+      log.ok(chalk.green('Ruta copiada al portapapeles pegala en tu terminal! (Ctrl + V)'));
     } catch (error) {
-      console.log(chalk.yellow('⚠️ No se pudo copiar al portapapeles ', error));
+      log.warn(chalk.yellow('No se pudo copiar al portapapeles ', error));
     }
     rl.close();
     return;

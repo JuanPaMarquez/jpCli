@@ -2,6 +2,7 @@ import { mostrarError, mostrarTecnologias, mostrarProyectos } from './view/mostr
 import { preguntarTecnologia, preguntarProyecto } from './view/preguntar.js';
 import { datosProyectos } from './data/data.js';
 import { hayProyectos } from './logic/validadores.js';
+import { log } from '../utils/logger.js';
 
 export function cargarProyectos(tecnologiaSeleccionada, proyectos) {
   mostrarProyectos(tecnologiaSeleccionada);
@@ -21,6 +22,6 @@ export function iniciarSistema() {
 }
 
 export function systemFilesApp() {
-  console.log('Iniciando el sistema de archivos...');
+  log.ok('Iniciando el sistema de archivos...');
   iniciarSistema();
 }
